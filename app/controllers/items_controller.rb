@@ -58,6 +58,6 @@ class ItemsController < ApplicationController
 
   private 
   def item_params
-    params.require(:item).permit(:dish, :toppings, :cost, :size, :app_side, :drink_type, :order_id)
+    params.require(:item).permit(:dish, :cost, :size, :app_side, :drink_type, :order_id, :toppings => [])
   end
 end
