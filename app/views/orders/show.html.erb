@@ -1,0 +1,23 @@
+<h2>Order#show</h2>
+
+<p>This will show a single Order. Accessed by User and Admin</p>
+
+<p>This will be the fuctioning "Cart" for the order.</p>
+<p>All items for the pending ordered will be displayed</p>
+<p>Total cost will be displayed at the bottom of the page but not added to the order object until the order is "Confirmed"</p>
+<p>When the user clicks "Confirm Order" the order will be updated with the total_cost and there will be a new time for "updated_at", which will be used as the functioning "Order Time".</p>
+<h2>EXAMPLE</h2>
+<p> Order number <%= @order.id %>"</p>
+<% if @order.items.any? %>
+  <h4> Items:</h4>
+  <% @order.items.each do |item| %>
+    <ul>
+      <li>
+        <p><%= link_to item.dish, edit_order_item_path(@order, item) %></p>
+        <p>$<%= item.cost %></p>
+      </li>
+    </ul>
+  <% end %>
+<% else %>
+  <p>You have no items for this order.</p>
+<% end %>
