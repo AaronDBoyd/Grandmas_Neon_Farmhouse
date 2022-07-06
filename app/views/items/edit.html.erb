@@ -1,0 +1,25 @@
+<h2>Edit Item</h2>
+
+<p>This page will use IF statements to render the appropriate form for the item, depending on the type of DISH </p>
+
+<% if @item.dish == "pizza" %>
+  <%= form_for [@order, @item] do |f| %>
+    <%= f.label :size %>
+    <%= f.select :size, [["small", "small"],["medium", "medium"],["large", "large"]]%>
+    <% topping_list = ["pepperoni", "sausage"] %>
+    <% topping_list.each do |topping|%>
+      <%= f.check_box :toppings, { multiple: true }, topping, false %>
+      <%= f.label topping %>
+      <% end %>
+    
+    <%= f.submit %>
+  <% end %>
+
+<% elsif @item.dish == "burger" %>
+
+# <% elsif @item.dish == "salad" %>
+
+# <% elsif @item.dish == "drink" %>
+
+# <% elsif @item.dish == "app_side" %>
+# <% end %>    
