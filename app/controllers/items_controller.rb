@@ -1,5 +1,9 @@
 class ItemsController < ApplicationController
 
+  def menu
+    render :menu
+  end
+
   def index
     @items = Item.all
     render :index
