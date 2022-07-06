@@ -15,6 +15,7 @@
       <li>
         <p><%= link_to item.dish, edit_order_item_path(@order, item) %></p>
         <p>$<%= item.cost %></p>
+        <p><%= item.toppings.join(", ") %></p>
       </li>
     </ul>
   <% end %>
