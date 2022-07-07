@@ -1,13 +1,6 @@
-<h2>Order#show</h2>
+<h2>CART</h2>
 
-<p>This will show a single Order. Accessed by User and Admin</p>
-
-<p>This will be the fuctioning "Cart" for the order.</p>
-<p>All items for the pending ordered will be displayed</p>
-<p>Total cost will be displayed at the bottom of the page but not added to the order object until the order is "Confirmed"</p>
-<p>When the user clicks "Confirm Order" the order will be updated with the total_cost and there will be a new time for "updated_at", which will be used as the functioning "Order Time".</p>
-<h2>EXAMPLE</h2>
-<p> Order number <%= @order.id %>"</p>
+<p> Order number <%= @order.id %></p>
 <% if @order.items.any? %>
   <h4> Items:</h4>
   <% @order.items.each do |item| %>
@@ -18,7 +11,7 @@
         <p><%= item.toppings.join(", ") %></p>
         <p><%= item.app_side %></p>
         <p><%= item.size %></p>
-
+        <p><%= item.drink_type %></p>
       </li>
     </ul>
   <% end %>
@@ -26,10 +19,13 @@
   <p>You have no items for this order.</p>
 <% end %>
 
-<%# <a href="/orders/#{order_id}?sort=burger"><button>Add Burger</button></a>
-<%= link_to "Add Pizza", new_order_item_path(@order), {:dish => "pizza"} %>
-<%# <%= link_to "Add Salad", new_order_item_path(@order), {:dish => "salad"} %>
-<%# <%= link_to "Add App/Side", new_order_item_path(@order), {:dish => "app_side"} %> %>
-<%# <%= link_to "Add Drink", new_order_item_path(@order), {:dish => "drink"} %> %> %> %>
-
 <%= link_to "Add new Item", new_order_item_path(@order)%>
+
+
+<h2>Order Total Cost: $<%= cart_total(@order)%></h2>
+
+<p> Confirm Order Button </p>
+<%= link_to 'Proceed to Checkout', edit_order_path(@order), class: "btn btn-secondary" %>
+<br>
+<br>
+<%= link_to "Cancel Order", order_path(@order), :method => "delete" %>
