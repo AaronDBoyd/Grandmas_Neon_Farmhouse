@@ -1,6 +1,6 @@
-<h2>Edit Item</h2>
+<h2>Edit your <%=@item.dish%></h2>
 
-<p>This page will use IF statements to render the appropriate form for the item, depending on the type of DISH </p>
+<br>
 
 <% if @item.dish == "pizza" %>
   <%= form_for [@order, @item] do |f| %>
@@ -50,3 +50,5 @@
     <%= f.submit %>
     <% end %>
 <% end %>    
+
+<%= link_to "Delete Item", order_item_path(@order, @item), :method => "delete" %>
