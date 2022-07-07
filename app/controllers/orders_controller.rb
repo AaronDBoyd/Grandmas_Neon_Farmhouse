@@ -14,10 +14,10 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
+    @order = Order.new()
     if @order.save
-      flash[:notice] = "Order succesfully added"
-      redirect_to orders_path
+      flash[:notice] = "Order succesfully created"
+      redirect_to order_path(@order)
     else 
       render :new
     end
@@ -30,13 +30,13 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    # if @order.item
     render :show
   end
 
   def update
     @order = Order.find(params[:id])
     if @order.update(order_params)
+      order_total(@order)
       flash[:notice] = "Order successfully updated"
       redirect_to orders_path
     else
@@ -58,5 +58,13 @@ class OrdersController < ApplicationController
   private 
     def order_params
       params.require(:order).permit(:total_cost)
+    end
+
+    def order_total(order)
+      order.total_cost = 0
+      order.items.each do |item|
+        order.total_cost += item.cost
+      end
+      order.save
     end
 end
