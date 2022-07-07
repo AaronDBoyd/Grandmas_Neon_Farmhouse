@@ -1,3 +1,28 @@
-<h2>Orders#edit</h2>
+<h2>Order Summary</h2>
 
-<p>This page will be used to edit an order that has been placed. Maybe it can be accessed by users. Maybe it can only be accessed by Admins; Users can call to see if we're willing to change their order or if it's too late.</p>
+<p> Order number <%= @order.id %></p>
+<% if @order.items.any? %>
+  <h4> Items:</h4>
+  <% @order.items.each do |item| %>
+    <ul>
+      <li>
+        <p><%= link_to item.dish, edit_order_item_path(@order, item) %></p>
+        <p>$<%= item.cost %></p>
+        <p><%= item.toppings.join(", ") %></p>
+        <p><%= item.app_side %></p>
+        <p><%= item.size %></p>
+      </li>
+    </ul>
+  <% end %>
+<% else %>
+  <p>You have no items for this order.</p>
+<% end %>
+
+<%= link_to "Return to Cart", order_path(@order)%>
+
+<h2>Order Total Cost: $<%= cart_total(@order)%></h2>
+
+<%= form_for @order do |f| %>
+  <%= f.hidden_field :total_cost, value: 0 %>
+  <%= f.submit "Confirm Order"%>
+<% end %>
