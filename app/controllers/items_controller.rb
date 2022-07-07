@@ -12,6 +12,17 @@ class ItemsController < ApplicationController
   def new
     @order = Order.find(params[:order_id])
     @item = @order.items.new
+    if params[:sort] == "burger"
+      @item.dish = "burger"
+    elsif params[:sort] == "pizza"
+      @item.dish = "pizza"
+    elsif params[:sort] == "salad"
+      @item.dish = "salad"
+    elsif params[:sort] == "app_side"
+      @item.dish = "app_side"
+    elsif params[:sort] == "drink"
+      @item.dish = "drink"
+    end
     render :new
   end
 
@@ -20,7 +31,7 @@ class ItemsController < ApplicationController
     @item = @order.items.new(item_params)
     if @item.save
       flash[:notice] = "Item succesfully added"
-      redirect_to items_path
+      redirect_to order_path(@order)
     else
       render :new
     end

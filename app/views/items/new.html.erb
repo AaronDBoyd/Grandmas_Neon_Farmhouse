@@ -1,3 +1,69 @@
 <h2>items#new</h2>
 <p>This page will be where the user will modify their item bfore adding it to the order.</p>
 <p>For example, If the user clicks on the "ADD BURGER" button in the menu, it takes them to this page with all of the BURGER options availible</p>
+
+<a href="?sort=burger"><button>Add Burger</button></a>
+<a href="?sort=pizza"><button>Add Pizza</button></a>
+<a href="?sort=salad"><button>Add Salad</button></a>
+<a href="?sort=app_side"><button>Add App/Side</button></a>
+<a href="?sort=drink"><button>Add Drink</button></a>
+
+<% if @item.dish == "pizza" %>
+  <%= form_for [@order, @item] do |f| %>
+  <p>Make Pizza</p>
+    <% f.label :dish %>
+    <%= f.select :dish, [["pizza", "pizza"]] %>
+    <%= f.label :size %>
+    <%= f.select :size, [["small", "small"],["medium", "medium"],["large", "large"]]%>
+    <% topping_list = ["pepperoni", "sausage"] %>
+    <% topping_list.each do |topping|%>
+      <%= f.check_box :toppings, { multiple: true }, topping, false %>
+      <%= f.label topping %>
+      <% end %>
+    <%= f.submit %>
+  <% end %>
+
+<% elsif @item.dish == "burger" %>
+  <%= form_for [@order, @item] do |f| %>
+    <%= f.label :dish %>
+    <%= f.select :dish, [["burger", "burger"]] %>
+    <% topping_list = ["cheese", "bacon"] %>
+    <% topping_list.each do |topping|%>
+      <%= f.check_box :toppings, { multiple: true }, topping, false %>
+      <%= f.label topping %>
+      <% end %>
+    <%= f.submit %>
+  <% end %>
+
+<% elsif @item.dish == "salad" %>
+  <%= form_for [@order, @item] do |f| %>
+    <%= f.label :dish %>
+    <%= f.select :dish, [["salad", "salad"]] %>
+    <% topping_list = ["fried chicken", "baked chicken", "salmon", "dressing"] %>
+    <% topping_list.each do |topping|%>
+      <%= f.check_box :toppings, { multiple: true }, topping, false %>
+      <%= f.label topping %>
+      <% end %>
+    <%= f.submit %>
+<% end %>
+
+<% elsif @item.dish == "drink" %>
+  <%= form_for [@order, @item] do |f| %>
+    <%= f.label :dish %>
+    <%= f.select :dish, [["drink", "drink"]] %>
+    <%= f.label :size %>
+    <%= f.select :size, [["small", "small"],["medium", "medium"],["large", "large"]]%>
+    <%= f.label :drink_type %>
+    <%= f.select :drink_type, [["soda", "soda"],["milkshake", "milkshake"],["beer", "beer"],["wine", "wine"]]%>
+    <%= f.submit %>
+  <% end %>
+
+<% elsif @item.dish == "app_side" %>
+    <%= form_for [@order, @item] do |f| %>
+    <%= f.label :dish %>
+    <%= f.select :dish, [["app_side", "app_side"]] %>
+    <%= f.label :app_side %>
+    <%= f.select :app_side, [["fries", "fries"], ["mozzy sticks", "mozzy sticks"], ["spinach & artichoke dip", "spinach & artichoke dip"], ["grandma's salty buscuit", "grandma's salty buscuit"]]%>
+    <%= f.submit %>
+    <% end %>
+<% end %>

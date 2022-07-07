@@ -30,6 +30,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    # if @order.item
     render :show
   end
 

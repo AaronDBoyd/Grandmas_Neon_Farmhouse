@@ -16,9 +16,20 @@
         <p><%= link_to item.dish, edit_order_item_path(@order, item) %></p>
         <p>$<%= item.cost %></p>
         <p><%= item.toppings.join(", ") %></p>
+        <p><%= item.app_side %></p>
+        <p><%= item.size %></p>
+
       </li>
     </ul>
   <% end %>
 <% else %>
   <p>You have no items for this order.</p>
 <% end %>
+
+<%# <a href="/orders/#{order_id}?sort=burger"><button>Add Burger</button></a>
+<%= link_to "Add Pizza", new_order_item_path(@order), {:dish => "pizza"} %>
+<%# <%= link_to "Add Salad", new_order_item_path(@order), {:dish => "salad"} %>
+<%# <%= link_to "Add App/Side", new_order_item_path(@order), {:dish => "app_side"} %> %>
+<%# <%= link_to "Add Drink", new_order_item_path(@order), {:dish => "drink"} %> %> %> %>
+
+<%= link_to "Add new Item", new_order_item_path(@order)%>
