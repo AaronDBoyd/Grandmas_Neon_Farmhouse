@@ -1,3 +1,7 @@
+<% if current_user %>
+  <h3><%= current_user.email %></h3>
+<% end %>
+
 <h2>CART</h2>
 
 <p> Order number <%= @order.id %></p>
