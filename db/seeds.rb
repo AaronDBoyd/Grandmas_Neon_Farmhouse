@@ -1,6 +1,11 @@
 Item.destroy_all
 Order.destroy_all
+User.destroy_all
 
+user = User.create!(email: 'gamgam@gnf.com', password: '123456')
+admin = User.create!(email: 'meemaw@gnf.com', password: '123456', admin: true)
+
+user_id_array = [user.id, admin.id]
 
 type_array = ["pizza", "burger", "salad", "drink", "app_side"]
 pizza_toppings_array = ["pepperoni", "mushrooms", "olives", "sausage"]
@@ -11,7 +16,8 @@ app_side_array = ["fries", "mozzy sticks", "spinach & artichoke dip", "grandma's
 drink_type_array = ["soda", "beer", "wine", "milkshake"]
 
 2.times do |i|
-  order = Order.create!(total_cost: 0)
+  order = Order.create!(total_cost: 0, user_id: user_id_array.sample)
+  p "Order created by #{order.user.email.split('@')[0].capitalize}."
   5.times do |i|
   
   food_type = type_array.sample
@@ -98,6 +104,6 @@ drink_type_array = ["soda", "beer", "wine", "milkshake"]
   end
   order.save
   p"....."
-  p"....."
   p "This order costs $#{order.total_cost}."
+  p "--------------------------------------------"
 end
