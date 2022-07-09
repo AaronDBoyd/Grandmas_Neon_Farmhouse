@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new()
+    @order = Order.new(order_params)
     if @order.save
       flash[:notice] = "Order succesfully created"
       redirect_to order_path(@order)
@@ -57,7 +57,7 @@ class OrdersController < ApplicationController
 
   private 
     def order_params
-      params.require(:order).permit(:total_cost)
+      params.require(:order).permit(:total_cost, :user_id)
     end
 
     def order_total(order)
