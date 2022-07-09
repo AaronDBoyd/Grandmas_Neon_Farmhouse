@@ -3,6 +3,10 @@
 
 <h2>Home Page</h2>
 
-<p><%= link_to "View Orders", orders_path %></p>
-<p><%= link_to "New Order", new_order_path %></p>
+<% if current_user %>
+  <p><%= link_to "View Orders", orders_path %></p>
+  <p><%= link_to "New Order", new_order_path %></p>
+<% else %>
+  <h3>Please Sign-In to place an order</h3>
+<% end %>
 <p><%= link_to "View menu", menu_path %></p>
