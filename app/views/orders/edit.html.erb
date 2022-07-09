@@ -6,8 +6,10 @@
   <% @order.items.each do |item| %>
     <ul>
       <li>
-        <p><%= link_to item.dish, edit_order_item_path(@order, item) %></p>
+        <%# <p><%= link_to item.dish, edit_order_item_path(@order, item) %>
+        <p><%= item.dish %></p>
         <p>$<%= item.cost %></p>
+        <p><%= item.drink_type %></p>
         <p><%= item.toppings.join(", ") %></p>
         <p><%= item.app_side %></p>
         <p><%= item.size %></p>
@@ -24,5 +26,5 @@
 
 <%= form_for @order do |f| %>
   <%= f.hidden_field :total_cost, value: 0 %>
-  <%= f.submit "Confirm Order"%>
+  <%= f.submit "Place Order"%>
 <% end %>
