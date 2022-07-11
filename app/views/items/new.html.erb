@@ -1,11 +1,11 @@
 <h2>Add an Item to your Order</h2>
 
 
-<a href="?sort=burger"><button>Add Burger</button></a>
-<a href="?sort=pizza"><button>Add Pizza</button></a>
-<a href="?sort=salad"><button>Add Salad</button></a>
-<a href="?sort=app_side"><button>Add App/Side</button></a>
-<a href="?sort=drink"><button>Add Drink</button></a>
+<a href="?sort=burger"><button>Burgers</button></a>
+<a href="?sort=pizza"><button>Pizzas</button></a>
+<a href="?sort=salad"><button>Salads</button></a>
+<a href="?sort=app_side"><button>Apps and sides</button></a>
+<a href="?sort=drink"><button>Drinks</button></a>
 
 <% if @item.dish == "pizza" %>
   <h2>Build Your Pizza</h2> 
@@ -13,7 +13,7 @@
     <%= f.hidden_field :dish, value: "pizza" %>
     <%= f.label :size %>
     <%= f.select :size, [["small", "small"],["medium", "medium"],["large", "large"]]%>
-    <% topping_list = ["pepperoni", "sausage"] %>
+    <% topping_list = ["pepperoni", "sausage", "canadian bacon", "mushrooms", "black olives", "onions", "bell pepper", "jalapeno"] %>
     <% topping_list.each do |topping|%>
       <%= f.check_box :toppings, { multiple: true }, topping, false %>
       <%= f.label topping %>
@@ -25,7 +25,7 @@
   <h2>Build Your Burger</h2>
   <%= form_for [@order, @item] do |f| %>
     <%= f.hidden_field :dish, value: "burger" %>
-    <% topping_list = ["cheese", "bacon"] %>
+    <% topping_list = ["cheese", "bacon", "fried egg", "jalapeno", "onions", "lettuce", "pickles", "tomatoes" ] %>
     <% topping_list.each do |topping|%>
       <%= f.check_box :toppings, { multiple: true }, topping, false %>
       <%= f.label topping %>
@@ -37,7 +37,7 @@
   <h2>Build Your Salad</h2> 
   <%= form_for [@order, @item] do |f| %>
     <%= f.hidden_field :dish, value: "salad" %>
-    <% topping_list = ["fried chicken", "baked chicken", "salmon", "dressing"] %>
+    <% topping_list = ["fried chicken", "grilled chicken", "salmon", "buttermilk ranch dressing", "caesar", "vinaigrette"] %>
     <% topping_list.each do |topping|%>
       <%= f.check_box :toppings, { multiple: true }, topping, false %>
       <%= f.label topping %>
@@ -61,7 +61,7 @@
   <%= form_for [@order, @item] do |f| %>
     <%= f.hidden_field :dish, value: "app_side" %>
     <%= f.label :app_side %>
-    <%= f.select :app_side, [["fries", "fries"], ["mozzy sticks", "mozzy sticks"], ["spinach & artichoke dip", "spinach & artichoke dip"], ["grandma's salty buscuit", "grandma's salty buscuit"]]%>
+    <%= f.select :app_side, [["fries", "fries"], ["mozzy sticks", "mozzy sticks"], ["spinach & artichoke dip", "spinach & artichoke dip"], ["grandma's salty buscuit", "grandma's salty buscuit"], ["spicy buffalo wings", "spicy buffalo wings"]]%>
     <%= f.submit %>
   <% end %>
 <% end %>

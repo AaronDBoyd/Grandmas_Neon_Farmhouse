@@ -1,53 +1,33 @@
-<!DOCTYPE html>
+<!DOCTYPE html lang="en">
 <html>
   <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <title>Grandma's Neon Farmhouse</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
 
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
   </head>
 
   <body>
-
-  <p> HOME     MENU    ABOUT   ORDER   SIGN-IN/SIGN-UP  SIGN_UP  </p>
-
-  <header class="container">
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <%= flash[:alert] %>
-          <%= flash[:notice] %>
-          <h1>Grandma's Neon Farmhouse</h1>
-          <ul>
-            <% if user_signed_in? %>
-              <b><div>Signed in as: <%= current_user.email.split('@')[0].capitalize %></div></b>
-            <% end %>
-            <% if current_user %>
-              <h6><%= link_to "Edit Account", edit_user_registration_path %></h6>
-              <h6><%= link_to 'Logout', destroy_user_session_path, method: :delete %></h6>
-            <% else %>
-              <h6><%= link_to "Sign-In", new_user_session_path%></h6>
-              <h6><%= link_to "Sign-Up", new_user_registration_path%></h6>
-            <% end %>
-            <h6><%= link_to "Home", root_path %></h6>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
-
-
-
-    <% if notice %>
-  <p class="alert alert-success"><%= notice %></p>
-<% end %>
-<% if alert %>
-  <p class="alert alert-danger"><%= alert %></p>
-<% end %>
+  <div>
+  <%= render "layouts/navbar" %>
     <%= yield %>
+
+
+
+
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <div class="icon-bar">
+      <a href="https://www.instagram.com/grandmas_neon_farmhouse/" class="instagram"><i class="fa fa-instagram"></i></a>
+    </div>
+  </div>
   </body>
 </html>

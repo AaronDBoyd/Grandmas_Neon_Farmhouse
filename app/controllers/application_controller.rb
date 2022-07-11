@@ -9,4 +9,11 @@ class ApplicationController < ActionController::Base
     end
     total
   end
+
+  def authorize
+    if !current_user
+      flash[:alert] = "You need to be signed-in to place an order."
+      redirect_to '/'
+    end
+  end
 end

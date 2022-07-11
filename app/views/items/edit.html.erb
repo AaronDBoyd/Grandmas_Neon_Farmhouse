@@ -16,7 +16,7 @@
 
 <% elsif @item.dish == "burger" %>
   <%= form_for [@order, @item] do |f| %>
-    <% topping_list = ["cheese", "bacon"] %>
+    <% topping_list = ["cheese", "bacon", "fried egg", "jalapeno", "onions", "lettuce", "pickles", "tomatoes"] %>
     <% topping_list.each do |topping|%>
       <%= f.check_box :toppings, { multiple: true }, topping, false %>
       <%= f.label topping %>
@@ -26,7 +26,7 @@
 
 <% elsif @item.dish == "salad" %>
   <%= form_for [@order, @item] do |f| %>
-    <% topping_list = ["fried chicken", "baked chicken", "salmon", "dressing"] %>
+    <% topping_list = ["fried chicken", "grilled chicken", "salmon", "buttermilk ranch dressing", "caesar", "vinaigrette"] %>
     <% topping_list.each do |topping|%>
       <%= f.check_box :toppings, { multiple: true }, topping, false %>
       <%= f.label topping %>
@@ -46,7 +46,7 @@
 <% elsif @item.dish == "app_side" %>
     <%= form_for [@order, @item] do |f| %>
     <%= f.label :app_side %>
-    <%= f.select :app_side, [["fries", "fries"], ["mozzy sticks", "mozzy sticks"], ["spinach & artichoke dip", "spinach & artichoke dip"], ["grandma's salty buscuit", "grandma's salty buscuit"]]%>
+    <%= f.select :app_side, [["fries", "fries"], ["mozzy sticks", "mozzy sticks"], ["spinach & artichoke dip", "spinach & artichoke dip"], ["grandma's salty buscuit", "grandma's salty buscuit"], ["spicy buffalo wings", "spicy buffalo wings"]]%>
     <%= f.submit %>
     <% end %>
 <% end %>    

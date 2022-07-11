@@ -2,6 +2,8 @@ class OrdersController < ApplicationController
   # before_action :authenticate_user!, :only => [:new, :edit, :destroy, :update] do
   #   redirect_to new_user_session_path unless current_user && current_user.admin
   # end
+  before_action :authorize, only: [:new]
+
 
   def index
     @orders = Order.all
@@ -16,7 +18,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     if @order.save
-      flash[:notice] = "Order succesfully created"
+      flash[:notice] = "Order succesfully started"
       redirect_to order_path(@order)
     else 
       render :new
@@ -53,6 +55,10 @@ class OrdersController < ApplicationController
   
   def home
     render :home
+  end
+
+  def about 
+    render :about
   end
 
   private 

@@ -1,0 +1,36 @@
+
+    <div class="text-effect">
+      <h1 class="neon" data-text="Grandma's Neon Farmhouse" contenteditable>Neon</h1>
+      <div class="gradient"></div>
+      <div class="spotlight"></div>
+    </div>
+
+    <header class="topnav container">
+
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+
+            <ul>
+              <li><%= link_to "Home", "/", class: "btn btn-default" %></li>
+              <li><%= link_to "Menu", "/menu", class: "btn btn-default" %></li>
+              <li><%= link_to "About", "/about", class: "btn btn-default" %></li>
+              <li><%= link_to "Place Order", "/orders/new", class: "btn btn-default" %></li>
+              <li><%= link_to "Sign-In", new_user_session_path, class: "btn btn-default" %></li>
+              <li><%= link_to "Sign-Out", destroy_user_session_path, :method => :delete, class: "btn btn-default"  %></li>
+            </ul>
+
+            <h1><%= flash[:alert] %><h1>
+            <h1><%= flash[:notice] %></h1>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+
+      <%# <% if notice %> 
+    <%# <p class="alert alert-success"><%= notice</p> %>
+    <%# <% end %> 
+    <%# <% if alert %> 
+    <%# <p class="alert alert-danger"><%= alert</p> %>
+    <%# <% end %> 

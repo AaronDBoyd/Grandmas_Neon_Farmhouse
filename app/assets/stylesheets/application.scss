@@ -1,2 +1,262 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+// body {
+//   background-color: black;
+// }
+
+:root {
+  margin: 40px;
+}
+
+//TITLE
+
+
+//attempt 2
+// Change the colors
+$color1: red;
+$color2: orange;
+$color3: yellow;
+$color4: green;
+$color5: blue;
+$color6: indigo;
+$color7: violet;
+
+.text-effect {
+  overflow: hidden;
+  position: relative;
+  
+  // The blend modes mute the colors, so let's bump them up
+  filter: contrast(110%) brightness(190%);
+}
+
+.neon {
+  position: relative;
+  
+  // Only works on a black background, sorry
+  background: black;
+  
+  // The actual text inside the div is superfluous, only data-text matters. The text is added so you can easily edit the preview
+  color: transparent;
+  
+  &::before,
+  &::after {
+    // Add two copies of the text on their own layer
+    content: attr(data-text);
+    
+    // White, so we can paint them later
+    color: white;
+    
+    // And blur them to create the neon effect with the blend-mode below
+    filter: blur(0.02em);
+    
+    position: absolute;
+    top: 0; left: 0;
+    pointer-events: none;
+  }
+  
+  // Set the top copy to difference. This creates the knock-out effect with a bit of glow
+  &::after {
+    mix-blend-mode: difference;
+  }
+}
+
+// Position our two effect layers
+.gradient,
+.spotlight {
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  pointer-events: pointer;
+  z-index: 10;  
+}
+
+// Add the colors
+.gradient {
+  background: linear-gradient(45deg, $color1, $color2, $color3, $color4);
+  
+  // Multiply mode will paint only the white text
+  mix-blend-mode: multiply;
+}
+
+.spotlight {
+  animation: light 5s infinite linear;
+  
+  // These are the lights, color-dodge needs a black bg for optimum effect
+  background: 
+    radial-gradient(circle, white, transparent 25%) 0 0 / 25% 25%, 
+    radial-gradient(circle, white, black 25%) 50% 50% / 12.5% 12.5%;
+  top: -100%; left: -100%;
+  
+  // Color dodge gives the lights that shimmer effect
+  mix-blend-mode: color-dodge;
+}
+
+@keyframes light {
+  1% {
+    transform: translate3d(50%, 50%, 0);
+  }
+}
+
+//=== Pen styling, ignore
+
+// Style text
+.neon {
+  font: 700 125px Brush Script MT, Brush Script Std, cursive;
+  text-transform: downcase;
+  text-align: center;
+  margin: 0;
+  
+  &:focus { outline: none; border: 1px dotted white; }
+}
+
+// Center everything
+body {
+  background: black;
+  display: flex;
+  // min-height: 100vh;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+//end attempt 2
+
+
+
+//BODY STYLE
+body {
+  background-color: black;
+  color: white;
+}
+
+.whiteText {
+  color: white;
+}
+
+//NAV BAR
+nav {
+  float: center;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-default {
+  background-color: black;
+  border-color: black;
+  font-family: Brush Script MT, Brush Script Std, cursive;
+}
+
+nav li {
+  display: inline-block;
+}
+
+.btn {
+  border-radius: 10px;
+  background: rgb(255, 1, 166);
+  border: none;
+  color: yellow;
+  text-align: center;
+  font-size: 18px;
+  padding: 0px;
+  width: 165px;
+  transition: all 0.2s;
+  cursor: pointer;
+  margin: 5px;
+  box-shadow: 3px 3px limegreen;
+}
+
+.btn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.btn span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.btn:hover span {
+  padding-right: 25px;
+}
+
+.btn:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+
+
+
+//Social links
+@media screen and (max-width: 800px) {
+  .column {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .column {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+
+.icon-bar {
+  position: fixed;
+  top: 15%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.icon-bar a {
+  display: block;
+  position: left;
+  text-align: center;
+  padding: 10px;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 20px;
+  border-radius: 25%;
+}
+
+.icon-bar a:hover {
+  background-color: rgb(255, 1, 166);
+}
+
+.instagram {
+  background: #125688;
+  color: white;
+}
+
+
+
+
+//image gallery
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+.column {
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
