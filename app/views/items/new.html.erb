@@ -1,11 +1,12 @@
+<center>
 <h2>Add an Item to your Order</h2>
 
-
-<a href="?sort=burger"><button>Burgers</button></a>
-<a href="?sort=pizza"><button>Pizzas</button></a>
-<a href="?sort=salad"><button>Salads</button></a>
-<a href="?sort=app_side"><button>Apps and sides</button></a>
-<a href="?sort=drink"><button>Drinks</button></a>
+<a href="?sort=burger"><button class="btn btn-default">Burgers</button></a>
+<a href="?sort=pizza"><button class="btn btn-default">Pizzas</button></a>
+<a href="?sort=salad"><button class="btn btn-default">Salads</button></a>
+<a href="?sort=app_side"><button class="btn btn-default">Apps and sides</button></a>
+<a href="?sort=drink"><button class="btn btn-default">Drinks</button></a>
+</center>
 
 <% if @item.dish == "pizza" %>
   <h2>Build Your Pizza</h2> 
@@ -13,12 +14,12 @@
     <%= f.hidden_field :dish, value: "pizza" %>
     <%= f.label :size %>
     <%= f.select :size, [["small", "small"],["medium", "medium"],["large", "large"]]%>
-    <% topping_list = ["pepperoni", "sausage", "canadian bacon", "mushrooms", "black olives", "onions", "bell pepper", "jalapeno"] %>
+    <% topping_list = ["pepperoni", "sausage", "canadian bacon", "mushrooms", "black olives", "onions", "bell pepper", "jalapeno", "pineapple"] %>
     <% topping_list.each do |topping|%>
       <%= f.check_box :toppings, { multiple: true }, topping, false %>
       <%= f.label topping %>
       <% end %>
-    <%= f.submit %>
+    <%= f.submit "Add Pizza to Order", class:"btn btn-default" %>
   <% end %>
 
 <% elsif @item.dish == "burger" %>
@@ -30,7 +31,7 @@
       <%= f.check_box :toppings, { multiple: true }, topping, false %>
       <%= f.label topping %>
       <% end %>
-    <%= f.submit %>
+    <%= f.submit "Add Burger to Order", class:"btn btn-default" %>
   <% end %>
 
 <% elsif @item.dish == "salad" %>
@@ -42,7 +43,7 @@
       <%= f.check_box :toppings, { multiple: true }, topping, false %>
       <%= f.label topping %>
       <% end %>
-    <%= f.submit %>
+    <%= f.submit "Add Salad to Order", class:"btn btn-default" %>
 <% end %>
 
 <% elsif @item.dish == "drink" %>
@@ -53,7 +54,7 @@
     <%= f.select :size, [["small", "small"],["medium", "medium"],["large", "large"]]%>
     <%= f.label :drink_type %>
     <%= f.select :drink_type, [["soda", "soda"],["milkshake", "milkshake"],["beer", "beer"],["wine", "wine"]]%>
-    <%= f.submit %>
+    <%= f.submit "Add Drink to Order", class:"btn btn-default" %>
   <% end %>
 
 <% elsif @item.dish == "app_side" %>
@@ -62,6 +63,6 @@
     <%= f.hidden_field :dish, value: "app_side" %>
     <%= f.label :app_side %>
     <%= f.select :app_side, [["fries", "fries"], ["mozzy sticks", "mozzy sticks"], ["spinach & artichoke dip", "spinach & artichoke dip"], ["grandma's salty buscuit", "grandma's salty buscuit"], ["spicy buffalo wings", "spicy buffalo wings"]]%>
-    <%= f.submit %>
+    <%= f.submit "Add App to Order", class:"btn btn-default" %>
   <% end %>
 <% end %>

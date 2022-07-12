@@ -26,5 +26,5 @@
 
 <%= form_for @order do |f| %>
   <%= f.hidden_field :total_cost, value: 0 %>
-  <%= f.submit "Place Order"%>
+  <%= f.submit "Place Order", class:"btn btn-default" %>
 <% end %>

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get '/about' => 'orders#about'
 
   devise_for :users
-  root to: 'orders#home'
+  root to: 'items#menu'
   resources :orders do
     resources :items
   end

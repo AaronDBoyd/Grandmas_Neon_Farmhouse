@@ -46,7 +46,7 @@
 <% elsif @item.dish == "app_side" %>
     <%= form_for [@order, @item] do |f| %>
     <%= f.label :app_side %>
-    <%= f.select :app_side, [["fries", "fries"], ["mozzy sticks", "mozzy sticks"], ["spinach & artichoke dip", "spinach & artichoke dip"], ["grandma's salty buscuit", "grandma's salty buscuit"], ["spicy buffalo wings", "spicy buffalo wings"]]%>
+    <%= f.select :app_side, [["fries", "fries"], ["mozzy sticks", "mozzy sticks"], ["spinach & artichoke dip", "spinach & artichoke dip"], ["grandma's salty biscuit", "grandma's salty biscuit"], ["spicy buffalo wings", "spicy buffalo wings"]]%>
     <%= f.submit %>
     <% end %>
 <% end %>    

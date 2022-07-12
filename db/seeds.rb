@@ -2,8 +2,8 @@ Item.destroy_all
 Order.destroy_all
 User.destroy_all
 
-user = User.create!(email: 'gamgam@gnf.com', password: '123456')
-admin = User.create!(email: 'meemaw@gnf.com', password: '123456', admin: true)
+user = User.create!(email: 'gamgam@gnf.com', password: 'Password1')
+admin = User.create!(email: 'meemaw@gnf.com', password: 'Password1', admin: true)
 
 user_id_array = [user.id, admin.id]
 

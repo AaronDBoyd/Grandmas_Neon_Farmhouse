@@ -123,14 +123,18 @@ body {
 
 
 
-//BODY STYLE
-body {
-  background-color: black;
-  color: white;
-}
+// BODY STYLE
+// body {
+//   background-color: black;
+//   color: white;
+// }
 
 .whiteText {
   color: white;
+}
+
+.blackText {
+  color: black;
 }
 
 //NAV BAR
@@ -213,7 +217,7 @@ nav li {
 
 .icon-bar {
   position: fixed;
-  top: 15%;
+  bottom: 0.01%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
@@ -246,7 +250,7 @@ nav li {
 .row {
   display: flex;
   flex-wrap: wrap;
-  padding: 0 4px;
+  padding: 0 200px;
 }
 
 .column {
@@ -256,7 +260,93 @@ nav li {
 }
 
 .column img {
-  margin-top: 8px;
+  margin-top: 20px;
   vertical-align: middle;
   width: 100%;
+}
+
+
+//base element styling
+hr {
+  border-top: 5px dotted white;
+  width: 50%
+  // margin: 0 auto;
+}
+
+
+scrolling menu
+body, html {
+  height: 100%;
+  margin: 0;
+  color: rgb(119, 119, 119);
+}
+
+.bgimg-1, .bgimg-2, .bgimg-3, .bgimg-4, .bgimg-5, .bgimg-6 {
+  position: relative;
+  opacity: 0.65;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+.bgimg-1 {
+  background-image: url("https://images.pexels.com/photos/7884129/pexels-photo-7884129.jpeg?auto=compress&cs=tinysrgb&w=1600");
+  min-height: 100%;
+}
+
+.bgimg-2 {
+  background-image: url("https://images.pexels.com/photos/1025804/pexels-photo-1025804.jpeg?auto=compress&cs=tinysrgb&w=1600");
+  min-height: 400px;
+}
+
+.bgimg-3 {
+  background-image: url("https://images.pexels.com/photos/1082343/pexels-photo-1082343.jpeg?auto=compress&cs=tinysrgb&w=1600");
+  min-height: 400px;
+}
+
+.bgimg-4 {
+  background-image: url("https://images.pexels.com/photos/750070/pexels-photo-750070.jpeg?auto=compress&cs=tinysrgb&w=1600");
+  min-height: 400px;
+}
+
+.bgimg-5 {
+  background-image: url("https://images.pexels.com/photos/5639378/pexels-photo-5639378.jpeg?auto=compress&cs=tinysrgb&w=1600");
+  min-height: 400px;
+}
+
+.bgimg-6 {
+  background-image: url("https://images.pexels.com/photos/110472/pexels-photo-110472.jpeg?auto=compress&cs=tinysrgb&w=1600");
+  min-height: 400px;
+}
+
+.caption {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  color: #000;
+}
+
+.caption span.border {
+  background-color: rgb(3, 240, 253);
+  color: rgb(223, 30, 217);
+  padding: 18px;
+  font-size: 25px;
+  letter-spacing: 10px;
+}
+
+h3 {
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font: 20px "Lato", sans-serif;
+  color: #111;
+}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1024px) {
+  .bgimg-1, .bgimg-2, .bgimg-3 {
+    background-attachment: scroll;
+  }
 }

@@ -1,8 +1,4 @@
-<% if current_user %>
-  <h3><%= current_user.email %></h3>
-<% end %>
-
-<h2>CART</h2>
+<h2>Cart for <%= current_user.email.split('@')[0].capitalize %></h2>
 
 <p> Order number <%= @order.id %></p>
 <% if @order.items.any? %>
@@ -23,12 +19,12 @@
   <p>You have no items for this order.</p>
 <% end %>
 
-<%= link_to "Add new Item", new_order_item_path(@order)%>
+<%= link_to "Add new Item", new_order_item_path(@order), class: "btn btn-default" %>
 
 
 <h2>Order Total Cost: $<%= cart_total(@order)%></h2>
 
-<%= link_to 'Proceed to Checkout', edit_order_path(@order), class: "btn btn-secondary" %>
+<%= link_to 'Checkout', edit_order_path(@order), class: "btn btn-default" %>
 <br>
 <br>
-<%= link_to "Cancel Order", order_path(@order), :method => "delete" %>
+<%= link_to "Cancel Order", order_path(@order), class: "btn btn-default", :method => "delete" %>
