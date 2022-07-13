@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   # before_action :authenticate_user!, :only => [:new, :edit, :destroy, :update] do
   #   redirect_to new_user_session_path unless current_user && current_user.admin
   # end
-  before_action :authorize, only: [:new]
+  before_action :authorize, except: [:about]
 
 
   def index

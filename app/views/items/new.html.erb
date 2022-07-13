@@ -1,68 +1,82 @@
 <center>
-<h2>Add an Item to your Order</h2>
+  <div class="whiteText">
+  <h2>Add an Item to your Order</h2>
 
-<a href="?sort=burger"><button class="btn btn-default">Burgers</button></a>
-<a href="?sort=pizza"><button class="btn btn-default">Pizzas</button></a>
-<a href="?sort=salad"><button class="btn btn-default">Salads</button></a>
-<a href="?sort=app_side"><button class="btn btn-default">Apps and sides</button></a>
-<a href="?sort=drink"><button class="btn btn-default">Drinks</button></a>
-</center>
+  <a href="?sort=burger"><button class="btn btn-default">Burgers</button></a>
+  <a href="?sort=pizza"><button class="btn btn-default">Pizzas</button></a>
+  <a href="?sort=salad"><button class="btn btn-default">Salads</button></a>
+  <a href="?sort=app_side"><button class="btn btn-default">Apps and sides</button></a>
+  <a href="?sort=drink"><button class="btn btn-default">Drinks</button></a>
+  </center>
 
-<% if @item.dish == "pizza" %>
-  <h2>Build Your Pizza</h2> 
-  <%= form_for [@order, @item] do |f| %>
-    <%= f.hidden_field :dish, value: "pizza" %>
-    <%= f.label :size %>
-    <%= f.select :size, [["small", "small"],["medium", "medium"],["large", "large"]]%>
-    <% topping_list = ["pepperoni", "sausage", "canadian bacon", "mushrooms", "black olives", "onions", "bell pepper", "jalapeno", "pineapple"] %>
-    <% topping_list.each do |topping|%>
-      <%= f.check_box :toppings, { multiple: true }, topping, false %>
-      <%= f.label topping %>
+  <% if @item.dish == "pizza" %>
+  <div class="whiteText">
+    <h2>Build Your Pizza</h2> 
+      <%= form_for [@order, @item] do |f| %>
+        <%= f.hidden_field :dish, value: "pizza" %>
+        <%= f.label :size %>
+    </div>
+        <%= f.select :size, [["small", "small"],["medium", "medium"],["large", "large"]]%>
+    <div class="whiteText">
+        <% topping_list = ["pepperoni", "sausage", "canadian bacon", "mushrooms", "black olives", "onions", "bell pepper", "jalapeno", "pineapple"] %>
+        <% topping_list.each do |topping|%>
+          <%= f.check_box :toppings, { multiple: true }, topping, false %>
+          <%= f.label topping %>
+          <% end %>
+        <%= f.submit "Add Pizza to Order", class:"btn btn-default" %>
       <% end %>
-    <%= f.submit "Add Pizza to Order", class:"btn btn-default" %>
-  <% end %>
+    </div>
 
-<% elsif @item.dish == "burger" %>
-  <h2>Build Your Burger</h2>
-  <%= form_for [@order, @item] do |f| %>
-    <%= f.hidden_field :dish, value: "burger" %>
-    <% topping_list = ["cheese", "bacon", "fried egg", "jalapeno", "onions", "lettuce", "pickles", "tomatoes" ] %>
-    <% topping_list.each do |topping|%>
-      <%= f.check_box :toppings, { multiple: true }, topping, false %>
-      <%= f.label topping %>
+  <% elsif @item.dish == "burger" %>
+  <div class="whiteText">
+    <h2>Build Your Burger</h2>
+      <%= form_for [@order, @item] do |f| %>
+        <%= f.hidden_field :dish, value: "burger" %>
+        <% topping_list = ["cheese", "bacon", "fried egg", "jalapeno", "onions", "lettuce", "pickles", "tomatoes" ] %>
+        <% topping_list.each do |topping|%>
+          <%= f.check_box :toppings, { multiple: true }, topping, false %>
+          <%= f.label topping %>
+          <% end %>
+        <%= f.submit "Add Burger to Order", class:"btn btn-default" %>
       <% end %>
-    <%= f.submit "Add Burger to Order", class:"btn btn-default" %>
-  <% end %>
+    </div>
 
-<% elsif @item.dish == "salad" %>
-  <h2>Build Your Salad</h2> 
-  <%= form_for [@order, @item] do |f| %>
-    <%= f.hidden_field :dish, value: "salad" %>
-    <% topping_list = ["fried chicken", "grilled chicken", "salmon", "buttermilk ranch dressing", "caesar", "vinaigrette"] %>
-    <% topping_list.each do |topping|%>
-      <%= f.check_box :toppings, { multiple: true }, topping, false %>
-      <%= f.label topping %>
+  <% elsif @item.dish == "salad" %>
+  <div class="whiteText">
+    <h2>Build Your Salad</h2> 
+      <%= form_for [@order, @item] do |f| %>
+        <%= f.hidden_field :dish, value: "salad" %>
+        <% topping_list = ["fried chicken", "grilled chicken", "salmon", "buttermilk ranch dressing", "caesar", "vinaigrette"] %>
+        <% topping_list.each do |topping|%>
+          <%= f.check_box :toppings, { multiple: true }, topping, false %>
+          <%= f.label topping %>
+          <% end %>
+        <%= f.submit "Add Salad to Order", class:"btn btn-default" %>
+    <% end %>
+  </div>
+
+  <% elsif @item.dish == "drink" %>
+  <div class="whiteText">
+    <h2>Choose Your Drink</h2> 
+      <%= form_for [@order, @item] do |f| %>
+        <%= f.hidden_field :dish, value: "drink" %>
+        <%= f.label :size %>
+        <%= f.select :size, [["small", "small"],["medium", "medium"],["large", "large"]]%>
+        <%= f.label :drink_type %>
+        <%= f.select :drink_type, [["soda", "soda"],["milkshake", "milkshake"],["beer", "beer"],["wine", "wine"]]%>
+        <%= f.submit "Add Drink to Order", class:"btn btn-default" %>
       <% end %>
-    <%= f.submit "Add Salad to Order", class:"btn btn-default" %>
-<% end %>
+    </div>
 
-<% elsif @item.dish == "drink" %>
-  <h2>Choose Your Drink</h2> 
-  <%= form_for [@order, @item] do |f| %>
-    <%= f.hidden_field :dish, value: "drink" %>
-    <%= f.label :size %>
-    <%= f.select :size, [["small", "small"],["medium", "medium"],["large", "large"]]%>
-    <%= f.label :drink_type %>
-    <%= f.select :drink_type, [["soda", "soda"],["milkshake", "milkshake"],["beer", "beer"],["wine", "wine"]]%>
-    <%= f.submit "Add Drink to Order", class:"btn btn-default" %>
-  <% end %>
-
-<% elsif @item.dish == "app_side" %>
-  <h2>Choose Your App/Side</h2> 
-  <%= form_for [@order, @item] do |f| %>
-    <%= f.hidden_field :dish, value: "app_side" %>
-    <%= f.label :app_side %>
-    <%= f.select :app_side, [["fries", "fries"], ["mozzy sticks", "mozzy sticks"], ["spinach & artichoke dip", "spinach & artichoke dip"], ["grandma's salty buscuit", "grandma's salty buscuit"], ["spicy buffalo wings", "spicy buffalo wings"]]%>
-    <%= f.submit "Add App to Order", class:"btn btn-default" %>
-  <% end %>
-<% end %>
+  <% elsif @item.dish == "app_side" %>
+    <div class="whiteText">
+      <h2>Choose Your App/Side</h2> 
+      <%= form_for [@order, @item] do |f| %>
+        <%= f.hidden_field :dish, value: "app_side" %>
+        <%= f.label :app_side %>
+        <%= f.select :app_side, [["fries", "fries"], ["mozzy sticks", "mozzy sticks"], ["spinach & artichoke dip", "spinach & artichoke dip"], ["grandma's salty buscuit", "grandma's salty buscuit"], ["spicy buffalo wings", "spicy buffalo wings"]]%>
+        <%= f.submit "Add App to Order", class:"btn btn-default" %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

@@ -1,10 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-// body {
-//   background-color: black;
-// }
-
 :root {
   margin: 40px;
 }
@@ -14,13 +10,10 @@
 
 //attempt 2
 // Change the colors
-$color1: red;
+$color1: rgb(255, 0, 174);
 $color2: orange;
 $color3: yellow;
-$color4: green;
-$color5: blue;
-$color6: indigo;
-$color7: violet;
+// $color4: green;
 
 .text-effect {
   overflow: hidden;
@@ -48,7 +41,7 @@ $color7: violet;
     color: white;
     
     // And blur them to create the neon effect with the blend-mode below
-    filter: blur(0.02em);
+    filter: blur(0.01em);
     
     position: absolute;
     top: 0; left: 0;
@@ -72,7 +65,7 @@ $color7: violet;
 
 // Add the colors
 .gradient {
-  background: linear-gradient(45deg, $color1, $color2, $color3, $color4);
+  background: linear-gradient(45deg, $color1, $color2, $color3, $color1);
   
   // Multiply mode will paint only the white text
   mix-blend-mode: multiply;
@@ -97,8 +90,6 @@ $color7: violet;
   }
 }
 
-//=== Pen styling, ignore
-
 // Style text
 .neon {
   font: 700 125px Brush Script MT, Brush Script Std, cursive;
@@ -120,14 +111,6 @@ body {
 }
 
 //end attempt 2
-
-
-
-// BODY STYLE
-// body {
-//   background-color: black;
-//   color: white;
-// }
 
 .whiteText {
   color: white;
@@ -155,6 +138,10 @@ nav ul {
 
 nav li {
   display: inline-block;
+  // align-content: center;
+  // overflow: hidden;
+  // text-align: center;
+  // margin: 0 auto;
 }
 
 .btn {

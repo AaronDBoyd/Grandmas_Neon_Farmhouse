@@ -1,30 +1,32 @@
-<h2>Order Summary</h2>
+<%# <div class="whiteText"> %>
+  <h2>Order Summary</h2>
 
-<p> Order number <%= @order.id %></p>
-<% if @order.items.any? %>
-  <h4> Items:</h4>
-  <% @order.items.each do |item| %>
-    <ul>
-      <li>
-        <%# <p><%= link_to item.dish, edit_order_item_path(@order, item) %>
-        <p><%= item.dish %></p>
-        <p>$<%= item.cost %></p>
-        <p><%= item.drink_type %></p>
-        <p><%= item.toppings.join(", ") %></p>
-        <p><%= item.app_side %></p>
-        <p><%= item.size %></p>
-      </li>
-    </ul>
+  <p> Order number <%= @order.id %></p>
+  <% if @order.items.any? %>
+    <h4> Items:</h4>
+    <% @order.items.each do |item| %>
+      <ul>
+        <li>
+          <%# <p><%= link_to item.dish, edit_order_item_path(@order, item) %>
+          <p><%= item.dish %></p>
+          <p>$<%= item.cost %></p>
+          <p><%= item.drink_type %></p>
+          <p><%= item.toppings.join(", ") %></p>
+          <p><%= item.app_side %></p>
+          <p><%= item.size %></p>
+        </li>
+      </ul>
+    <% end %>
+  <% else %>
+    <p>You have no items for this order.</p>
   <% end %>
-<% else %>
-  <p>You have no items for this order.</p>
-<% end %>
 
-<%= link_to "Return to Cart", order_path(@order)%>
+  <%= link_to "Return to Cart", order_path(@order)%>
 
-<h2>Order Total Cost: $<%= cart_total(@order)%></h2>
+  <h2>Order Total Cost: $<%= cart_total(@order)%></h2>
 
-<%= form_for @order do |f| %>
-  <%= f.hidden_field :total_cost, value: 0 %>
-  <%= f.submit "Place Order", class:"btn btn-default" %>
-<% end %>
+  <%= form_for @order do |f| %>
+    <%= f.hidden_field :total_cost, value: 0 %>
+    <%= f.submit "Place Order", class:"btn btn-default" %>
+  <% end %>
+<%# </div> %>

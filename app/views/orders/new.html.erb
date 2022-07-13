@@ -1,10 +1,12 @@
 <center>
-<h2>Start New Order</h2>
+  <div class="whiteText">
+    <h2>Start New Order</h2>
+  </div>
 
-<%= form_for @order do |f| %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.submit "Start Order", class: "btn btn-default" %>
-<% end %>
+  <%= form_for @order do |f| %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.submit "Start Order", class: "btn btn-default" %>
+  <% end %>
 
-<p><%= link_to "View Your Orders", "/orders", class: "btn btn-default" %></p>
+  <p><%= link_to "View Your Orders", "/orders", class: "btn btn-default" %></p>
 </center>

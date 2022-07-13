@@ -1,3 +1,4 @@
+<% if is_user? %>
 <h2>All Orders for <%= current_user.email.split('@')[0].capitalize %></h2>
 
 <%# <% if @orders.any? %> 
@@ -21,3 +22,29 @@
 <% else %>   
   <p> There are no Orders for this user. </p>  
 <% end %>
+<% end %>
+
+<% if is_admin? %>
+<h2>All Orders</h2>
+<%# <% if @orders.any? %> 
+<%# <% @orders.each do |order| %> 
+
+<% @orders.each do |order|%>
+  <ul>
+    <li>
+      <p><%= link_to "ORDER num. #{order.id}", order_path(order)%></p>
+      <% if order.total_cost %>
+        <%= "$#{order.total_cost}" %>
+      <% end %>
+      <% if order.updated_at.to_i > order.created_at.to_i %>
+        <p><%="Placed #{time_ago_in_words(order.updated_at)} ago" %></p>
+      <% else %>
+        <p> This order has not been placed yet.</p>
+      <% end %>
+    </li>
+  </ul>
+<% end %> 
+<% else %>   
+<p> There are no Orders for this user. </p>  
+<% end %>
+

@@ -15,6 +15,28 @@ size_array = ["small", "medium", "large"]
 app_side_array = ["fries", "mozzy sticks", "spinach & artichoke dip", "grandma's salty buscuit"]
 drink_type_array = ["soda", "beer", "wine", "milkshake"]
 
+# for sure admin test stuff below
+order = Order.create!(total_cost: 0, user_id: user.id, id: 1, total_cost: 11)
+p "Order created by #{order.user.email.split('@')[0].capitalize}."
+3.times do |i|
+
+food_type = "Pizza"
+pizza_size = size_array.sample
+
+food_type == "pizza" && pizza_size == "small"
+item = Item.create!(
+  dish: "pizza",
+  toppings: pizza_toppings_array.sample(Faker::Number.between(from: 1, to: 10)),
+  size: "small",  
+  order_id: order.id
+)
+item.cost = (item.toppings.count * 1) + 10
+item.save
+p "Your small pizza with #{item.toppings} costs #{item.cost} dollars"
+order.total_cost += item.cost
+end
+# admin stuff above probably not needed 
+
 2.times do |i|
   order = Order.create!(total_cost: 0, user_id: user_id_array.sample)
   p "Order created by #{order.user.email.split('@')[0].capitalize}."

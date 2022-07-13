@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :authorize, except: [:menu]
 
   def menu
     render :menu

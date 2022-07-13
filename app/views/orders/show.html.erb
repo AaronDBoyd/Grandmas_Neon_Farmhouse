@@ -1,30 +1,35 @@
-<h2>Cart for <%= current_user.email.split('@')[0].capitalize %></h2>
+<div class="whiteText">
+  <center>
+    <h2>Cart for <%= current_user.email.split('@')[0].capitalize %></h2>
 
-<p> Order number <%= @order.id %></p>
-<% if @order.items.any? %>
-  <h4> Items:</h4>
-  <% @order.items.each do |item| %>
-    <ul>
-      <li>
-        <p><%= link_to item.dish, edit_order_item_path(@order, item) %></p>
-        <p>$<%= item.cost %></p>
-        <p><%= item.toppings.join(", ") %></p>
-        <p><%= item.app_side %></p>
-        <p><%= item.size %></p>
-        <p><%= item.drink_type %></p>
-      </li>
-    </ul>
-  <% end %>
-<% else %>
-  <p>You have no items for this order.</p>
-<% end %>
+    <p> Order Number <%= @order.id %></p>
+    <% if @order.items.any? %>
+      <h4> Items:</h4>
+      <% @order.items.each do |item| %>
+        <ul>
+          <li>
+            <p><%= link_to item.dish, edit_order_item_path(@order, item) %></p>
+            <p>$<%= item.cost %></p>
+            <p><%= item.toppings.join(", ") %></p>
+            <p><%= item.app_side %></p>
+            <p><%= item.size %></p>
+            <p><%= item.drink_type %></p>
+          </li>
+        </ul>
+      <% end %>
+    <% else %>
+      <p>There are no items for this order.</p>
+    <% end %>
 
-<%= link_to "Add new Item", new_order_item_path(@order), class: "btn btn-default" %>
+    <%= link_to "Add new Item", new_order_item_path(@order), class: "btn btn-default" %>
 
 
-<h2>Order Total Cost: $<%= cart_total(@order)%></h2>
+    <h2>Order Total Cost: $<%= cart_total(@order)%></h2>
 
-<%= link_to 'Checkout', edit_order_path(@order), class: "btn btn-default" %>
-<br>
-<br>
-<%= link_to "Cancel Order", order_path(@order), class: "btn btn-default", :method => "delete" %>
+    <%= link_to 'Checkout', edit_order_path(@order), class: "btn btn-default" %>
+    <br>
+    <br>
+    <%= link_to "Cancel Order", order_path(@order), class: "btn btn-default", :method => "delete" %>
+  </center>
+</div>
+
