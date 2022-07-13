@@ -10,10 +10,9 @@
 
 //attempt 2
 // Change the colors
-$color1: rgb(255, 0, 174);
+$color1: rgb(255, 0, 187);
 $color2: orange;
 $color3: yellow;
-// $color4: green;
 
 .text-effect {
   overflow: hidden;
@@ -122,12 +121,14 @@ body {
 
 //NAV BAR
 nav {
-  float: center;
+  // float: center;
+  text-align: center;
 }
 
 nav ul {
-  margin: 0;
-  padding: 0;
+  // margin: 0;
+  // padding: 0;
+  display: inline-block;
 }
 
 .navbar-default {
@@ -336,4 +337,11 @@ h3 {
   .bgimg-1, .bgimg-2, .bgimg-3 {
     background-attachment: scroll;
   }
+}
+
+
+
+.style_image {
+  height: 200px;
+  width: 200px;
 }

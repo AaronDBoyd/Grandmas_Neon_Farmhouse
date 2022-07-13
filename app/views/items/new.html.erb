@@ -5,13 +5,14 @@
   <a href="?sort=burger"><button class="btn btn-default">Burgers</button></a>
   <a href="?sort=pizza"><button class="btn btn-default">Pizzas</button></a>
   <a href="?sort=salad"><button class="btn btn-default">Salads</button></a>
-  <a href="?sort=app_side"><button class="btn btn-default">Apps and sides</button></a>
+  <a href="?sort=app_side"><button class="btn btn-default">Appetizers</button></a>
   <a href="?sort=drink"><button class="btn btn-default">Drinks</button></a>
   </center>
 
   <% if @item.dish == "pizza" %>
-  <div class="whiteText">
+  <center><div class="whiteText">
     <h2>Build Your Pizza</h2> 
+    <%= image_tag "pizza.jpeg", :class => "style_image" %>
       <%= form_for [@order, @item] do |f| %>
         <%= f.hidden_field :dish, value: "pizza" %>
         <%= f.label :size %>
@@ -23,13 +24,15 @@
           <%= f.check_box :toppings, { multiple: true }, topping, false %>
           <%= f.label topping %>
           <% end %>
-        <%= f.submit "Add Pizza to Order", class:"btn btn-default" %>
+        <%= f.submit "Add Pizza to Order", class:"btn" %>
       <% end %>
-    </div>
+    </div></center>
 
   <% elsif @item.dish == "burger" %>
-  <div class="whiteText">
+  <center><div class="whiteText">
     <h2>Build Your Burger</h2>
+    <h4>All of Grandma's gourmet burgers are served on brioche bun with a side of fries!</h4>
+    <%= image_tag "cheese-burger.jpeg", :class => "style_image" %>
       <%= form_for [@order, @item] do |f| %>
         <%= f.hidden_field :dish, value: "burger" %>
         <% topping_list = ["cheese", "bacon", "fried egg", "jalapeno", "onions", "lettuce", "pickles", "tomatoes" ] %>
@@ -37,13 +40,15 @@
           <%= f.check_box :toppings, { multiple: true }, topping, false %>
           <%= f.label topping %>
           <% end %>
-        <%= f.submit "Add Burger to Order", class:"btn btn-default" %>
+          <br>
+        <%= f.submit "Add Burger to Order", class:"btn" %>
       <% end %>
-    </div>
+    </div></center>
 
   <% elsif @item.dish == "salad" %>
-  <div class="whiteText">
-    <h2>Build Your Salad</h2> 
+  <center><div class="whiteText">
+    <h2>Build Your Salad</h2>
+    <%= image_tag "salad-stacked.jpeg", :class => "style_image" %> 
       <%= form_for [@order, @item] do |f| %>
         <%= f.hidden_field :dish, value: "salad" %>
         <% topping_list = ["fried chicken", "grilled chicken", "salmon", "buttermilk ranch dressing", "caesar", "vinaigrette"] %>
@@ -51,32 +56,34 @@
           <%= f.check_box :toppings, { multiple: true }, topping, false %>
           <%= f.label topping %>
           <% end %>
-        <%= f.submit "Add Salad to Order", class:"btn btn-default" %>
+        <%= f.submit "Add Salad to Order", class:"btn" %>
     <% end %>
-  </div>
+  </div></center>
 
   <% elsif @item.dish == "drink" %>
-  <div class="whiteText">
+  <center><div class="whiteText">
     <h2>Choose Your Drink</h2> 
+    <%= image_tag "two-pints.jpeg", :class => "style_image" %>
       <%= form_for [@order, @item] do |f| %>
         <%= f.hidden_field :dish, value: "drink" %>
         <%= f.label :size %>
         <%= f.select :size, [["small", "small"],["medium", "medium"],["large", "large"]]%>
         <%= f.label :drink_type %>
         <%= f.select :drink_type, [["soda", "soda"],["milkshake", "milkshake"],["beer", "beer"],["wine", "wine"]]%>
-        <%= f.submit "Add Drink to Order", class:"btn btn-default" %>
+        <%= f.submit "Add Drink to Order", class:"btn" %>
       <% end %>
-    </div>
+    </div></center>
 
   <% elsif @item.dish == "app_side" %>
-    <div class="whiteText">
-      <h2>Choose Your App/Side</h2> 
+    <center><div class="whiteText">
+      <h2>Choose Your Appetizer</h2> 
+      <%= image_tag "spin-dip.jpeg", :class => "style_image" %>
       <%= form_for [@order, @item] do |f| %>
         <%= f.hidden_field :dish, value: "app_side" %>
         <%= f.label :app_side %>
-        <%= f.select :app_side, [["fries", "fries"], ["mozzy sticks", "mozzy sticks"], ["spinach & artichoke dip", "spinach & artichoke dip"], ["grandma's salty buscuit", "grandma's salty buscuit"], ["spicy buffalo wings", "spicy buffalo wings"]]%>
-        <%= f.submit "Add App to Order", class:"btn btn-default" %>
+        <%= f.select :app_side, [["fries", "fries"], ["mozzy sticks", "mozzy sticks"], ["spinach & artichoke dip", "spinach & artichoke dip"], ["grandma's salty biscuit", "grandma's salty biscuit"], ["spicy buffalo wings", "spicy buffalo wings"]]%>
+        <%= f.submit "Add App to Order", class:"btn" %>
       <% end %>
     <% end %>
-  </div>
+  </div></center>
 </div>
